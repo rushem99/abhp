@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<widget id="com.abhp.mobile" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+  <name>An Bình Hạnh Phúc</name>
+  <description>Tiếng nói rao truyền Phúc Âm Ðời Ðời cho người Việt trên thế giới thuộc những người yêu mến lẽ thật trọn vẹn cho thời kỳ cuối cùng và mong chờ sự tái lâm của Ðức Chúa Giê-su.
+
+    Phúc Âm Ðời Ðời qua Truyền Hình, Truyền Thanh, Ấn Phẩm, Giáo Dục, Xã Hội, Âm Nhạc, Hội Thánh Tư Gia,...
+
+    The Official Website of Peace &amp; Happiness Ministry, a ministry of the Remnant People of God who commit to proclaim the Everlasting Gospel of Revelation 14:6-12 to the Vietnamese People everywhere.
+
+    Everlasting Gospel through: television, radio, printed page, web, social activities, music, and homechurch network, ...
+
+    An Bình Hạnh Phúc là một tổ chức của những người được Chúa kêu gọi để rao giảng Phúc Âm Ðời Ðời, một cách trung thực như Lời Kinh Thánh dạy, cho người Việt.  Ðây là tổ chức của những người hy sinh cho lẽ thật, sẵn sàng hy sinh dấn thân cho Chúa Cứu Thế.  Ðây là một tổ chức của những người thà đốt một ngọn đèn hơn là đứng nguyền rũa bóng đêm.
+
+    Chúng tôi mong ước rằng quý vị tìm hiểu về ABHP, và nếu Chúa kêu gọi quý vị, hãy cùng tham gia với chúng tôi trong mục tiêu cao quý nầy.  Nguyện Chúa dẫn dắt quý vị trên con đường đi theo Ngài.
+
+    </description>
+  <author email="tdoan_dev@yahoo.com" href="http://abhp.us">
+ ABHP
+    </author>
+  <content src="index.html" />
+  <access origin="*" />
+  <access origin="tel:*" launch-external="yes" />
+  <access origin="mailto:*" launch-external="yes" />
+  <allow-navigation href="*" />
+  <preference name="webviewbounce" value="false" />
+  <preference name="UIWebViewBounce" value="false" />
+  <preference name="DisallowOverscroll" value="true" />
+  <preference name="android-minSdkVersion" value="16" />
+  <preference name="BackupWebStorage" value="none" />
+  <feature name="StatusBar">
+    <param name="ios-package" onload="true" value="CDVStatusBar" />
+  </feature>
+  <preference name="KeepRunning" value="True" />
+  <preference name="ShowTitle" value="True" />
+  <preference name="InAppBrowserStorageEnabled" value="True" />
+  <preference name="SuppressesIncrementalRendering" value="True" />
+  <preference name="windows-target-version" value="10.0" />
+  <plugin name="cordova-plugin-device" spec="~1.1.1" />
+  <plugin name="cordova-plugin-console" spec="~1.0.2" />
+  <plugin name="cordova-plugin-whitelist" spec="~1.2.1" />
+  <plugin name="cordova-plugin-statusbar" spec="~2.1.0" />
+  <plugin name="ionic-plugin-keyboard" spec="~1.0.8" />
+  <icon src="www/img/icon.png" />
+  <preference name="Orientation" value="landscape" />
+  <plugin name="cordova-plugin-geolocation" version="2.1.0" />
+  <plugin name="cordova-plugin-network-information" version="1.2.1" />
+</widget>
