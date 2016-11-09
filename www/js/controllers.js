@@ -1,5 +1,6 @@
 ﻿angular.module('starter.controllers', [])
 
+
 .controller('AppCtrl', function ($scope, $ionicModal, $ionicPlatform, $timeout, $sce)
 {
 
@@ -41,6 +42,65 @@
     }, 1000);
   };
 
+})
+
+.controller('AudioCtrl', function ($scope, $http, FeedService)
+{
+    $("ul#frontPodCast li a").click(function (e)
+    {
+        e.preventDefault();
+        var audioLink = $(this).attr("id");
+        $("ul#frontPodCast li a").removeClass("active_item");
+        $(this).addClass("active_item");
+        $(".audioPlayer audio#players").attr('src', audioLink);
+        $(".audioPlayer audio#players").attr('autoplay', true);
+        $(".audioPlayer audio#players").load();
+    });
+
+    //var test;
+
+    //$http.get("http://feeds.feedburner.com/VIESD_VOH?format=xml").then(function (response)
+    //{
+    //    var x2js = new X2JS();
+    //    var dom;
+    //    if (typeof DOMParser != "undefined")
+    //    {
+    //        var parser = new DOMParser();
+    //        dom = parser.parseFromString(response.data, "text/xml");
+    //    }
+    //    else
+    //    {
+    //        var doc = new ActiveXObject("Microsoft.XMLDOM");
+    //        doc.async = false;
+    //        dom = doc.loadXML(response.data);
+    //    }
+    //    console.log(dom);
+    //    console.log(JSON.stringify(x2js.xml_str2json(dom)));
+    //    // Now response is a DOMDocument with childNodes etc.
+    //    return dom;
+    //});
+
+    FeedService.parseFeed('http://feeds.feedburner.com/VIESD_VOH?format=xml').then(function (res)
+    {
+        $scope.feeds=res.data.responseData.feed.entries;
+        //console.log($scope.feeds);
+    });
+
+    $scope.load = function (audioLink)
+    {
+        var player = $(".audioPlayer audio#players");
+        console.log(audioLink);
+        player.attr('src', audioLink);
+        player.attr('autoplay', true);
+        player.load();
+
+        $scope.selected = audioLink;
+    }
+
+    $scope.isSelected = function (audioLink)
+    {
+        return $scope.selected === audioLink;
+    }
 })
 
     
@@ -111,7 +171,7 @@
 
 .controller('HomeCtrl', function ($scope, $cordovaNetwork, $rootScope)
 {
-    $scope.isOnline;
+    $scope.isOnline = true;
     var viewportWidth = $(window).width();
     var viewportHeight = $(window).height();
     var mediaFrame = $("#mediaFrame");

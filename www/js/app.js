@@ -28,27 +28,37 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngSanitize', 'ngCord
         // listen for Offline event
         $rootScope.$on('$cordovaNetwork:offline', function (event, networkState)
         {
-            var confirmPopup = $ionicPopup.confirm({
+            var alertPopup = $ionicPopup.alert({
                 title: 'Offline',
-                template: 'You must be connected to a Wi-Fi or celluar data network.',
-                cancelText: 'Cancel',
-                okText: 'OK'
+                template: 'You must be connected to a Wi-Fi or celluar data network.'
+                //cancelText: 'Cancel',
+                //okText: 'OK'
             });
 
-            confirmPopup.then(function (res)
+            alertPopup.then(function (res)
             {
-                if (res)
-                {
-                    ionic.Platform.exitApp();
-                }
-                else
-                {
-                }
+                ionic.Platform.exitApp();
+                //if (res)
+                //{
+                //    ionic.Platform.exitApp();
+                //}
+                //else
+                //{
+                //}
             });
         })
 
     });
 })
+
+.factory('FeedService',['$http',function($http){
+    return {
+        parseFeed : function(url){
+            return $http.jsonp('http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=50&callback=JSON_CALLBACK&q=' + encodeURIComponent(url));
+        }
+    }
+}])
+
 
 .config(function ($stateProvider, $urlRouterProvider)
 {
@@ -66,6 +76,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngSanitize', 'ngCord
         views: {
             'menuContent': {
                 templateUrl: 'templates/about.html'
+            }
+        }
+    })
+    .state('app.audio', {
+        url: '/audio',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/audio.html',
+                controller: 'AudioCtrl'
             }
         }
     })
@@ -108,3 +127,5 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngSanitize', 'ngCord
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/app/home');
 });
+
+
