@@ -1,0 +1,35 @@
+﻿<ion-view view-title="Truyền Thanh (Podcast)">
+    <ion-content>
+        <ion-searchbar [(ngModel)]="myInput"
+                       [showCancelButton]="shouldShowCancel"
+>
+        </ion-searchbar>
+        <div style="padding: 5px 5px 5px 5px;">
+            <div class="row" style="padding:0px;">
+                <div class="col">
+                   <span style="padding:5px;margin:0px 3px;"><input id="search" ng-model="searchText" placeholder="Tìm kiếm (Search)"></span>
+                </div>
+                <div class="col">
+                    <div class="audioPlayer">
+                        <audio style="background-color:#336699;border:1px solid #ddd;border-radius:5px;padding:3px;margin:0px 3px;width:250px;" id="players" src="http://feedproxy.google.com/~r/VIESD_VOH/~3/2vcG5AIDZdY/VIESD_VOHX_20141113_5.mp3" type="audio/mpeg" controls=""></audio>
+                    </div>                </div>
+                <div class="col">
+                </div>
+            </div>
+
+            <div class="container">
+                <ul id="frontPodCast">
+                    <li class="item" ng-repeat="feed in feeds | filter:searchText">
+                        
+                        <a class="playlist_item" id="{{feed.link}}" href="Javascript:void(0);" ng-click="load(feed.link);"><i ng-class="isSelected(feed.link) ? 'ion-volume-high' : 'icon ion-play'"></i> {{feed.title}}</a>
+                        <p class="text-left">{{feed.contentSnippet}}</p>
+                        <span class="small">{{feed.publishedDate}}</span>
+                    </li>
+                </ul>
+            </div>
+
+
+
+            </div>
+    </ion-content>
+</ion-view>
